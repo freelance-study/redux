@@ -44,11 +44,25 @@ function reducer (state, action) {
             return state;
     }
 }
+
+/**
+ * storeを作る
+ */
 const store = createStore(reducer, {todo: []});
+const store2 = createStore(reducer,{todo2: []});
 
-// Store に変更があれば、state を console に出力する
+
+
+/**
+ * store に変更があれば、state を console に出力する
+ */ 
 store.subscribe(() => console.log(store.getState()));
+store2.subscribe(() => console.log(store2.getState()));
 
+
+/**
+ * アクションをディスパッチする
+ */
 console.log("買い物を追加");
 store.dispatch(addToDo("買い物に行く"));
 
@@ -57,3 +71,8 @@ store.dispatch(addToDo("銀行に行く"));
 
 console.log("銀行に行くのをDone");
 store.dispatch(toggleToDo(1));
+
+
+console.log("Store2に追加");
+store2.dispatch(addToDo("Store2に追加しました01"));
+
